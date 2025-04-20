@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Prediction</title>
+    <style>
+        body {
+            background: linear-gradient(to right,  #4A90E2, #1C3E67); /* Same as signup.html */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #1e3c72;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2a5298;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Attrition Prediction</h2>
+        <form action="/predict_attrition" method="POST">
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="job_satisfaction">Job Satisfaction (1-5):</label>
+            <select id="job_satisfaction" name="job_satisfaction" required>
+                <option value="1">Very Dissatisfied</option>
+                <option value="2">Dissatisfied</option>
+                <option value="3">Neutral</option>
+                <option value="4">Satisfied</option>
+                <option value="5">Very Satisfied</option>
+            </select>
+
+            <label for="work_life_balance">Work-Life Balance (1-4):</label>
+            <select id="work_life_balance" name="work_life_balance" required>
+                <option value="1">Poor</option>
+                <option value="2">Average</option>
+                <option value="3">Good</option>
+                <option value="4">Excellent</option>
+            </select>
+
+            <label for="monthly_income">Monthly Income (₹):</label>
+            <input type="number" id="monthly_income" name="monthly_income" required>
+
+            <label for="years_at_company">Years at Company:</label>
+            <input type="number" id="years_at_company" name="years_at_company" required>
+
+            <label for="performance_rating">Performance Rating (1-5):</label>
+            <select id="performance_rating" name="performance_rating" required>
+                <option value="1">Very Poor</option>
+                <option value="2">Poor</option>
+                <option value="3">Average</option>
+                <option value="4">Good</option>
+                <option value="5">Excellent</option>
+            </select>
+
+            <label for="overtime">OverTime:</label>
+            <select id="overtime" name="overtime" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="education_level">Education Level:</label>
+            <select id="education_level" name="education_level" required>
+                <option value="High School">High School</option>
+                <option value="Bachelor's">Bachelor's</option>
+                <option value="Master's">Master's</option>
+                <option value="PhD">PhD</option>
+            </select>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="Sales">Sales</option>
+                <option value="IT">IT</option>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+
+            <label for="num_projects">Number of Projects:</label>
+            <input type="number" id="num_projects" name="num_projects" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

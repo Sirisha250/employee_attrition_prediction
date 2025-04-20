@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4A90E2, #1C3E67);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 40%;
+            background: white;
+            padding: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            width: 90%;
+            text-align: left;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #4A90E2;
+            outline: none;
+        }
+
+        .password-requirements {
+            font-size: 12px;
+            color: red;
+            text-align: left;
+            width: 90%;
+            display: none;
+        }
+
+        /* ✅ Fixed Checkbox Alignment */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 90%;
+            margin-top: 15px;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .checkbox-container a {
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 4px;
+        }
+
+        .checkbox-container a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 95%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #357ABD;
+        }
+
+        .back-btn {
+            width: 95%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #333;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+            }
+
+            .checkbox-container {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Create Your Account</h2>
+        <form action="/signup" method="POST" onsubmit="return validateForm()">
+
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password">New Password:</label>
+            <input type="password" name="password" id="password" required onkeyup="checkPasswordStrength()">
+            <p class="password-requirements" id="password-requirements">
+                Password must be at least 8 characters, include a number, an uppercase letter, and a special character.
+            </p>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+            <p class="error-message" id="error-message">Passwords do not match!</p>
+
+            <!-- ✅ Perfectly Aligned Checkbox -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">
+                    I accept the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <a href="/login"><button class="back-btn">Back to Login</button></a>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            var password = document.getElementById("password").value;
+            var passwordRequirements = document.getElementById("password-requirements");
+
+            var strongRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!strongRegex.test(password)) {
+                passwordRequirements.style.display = "block";
+            } else {
+                passwordRequirements.style.display = "none";
+            }
+        }
+
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            var errorMessage = document.getElementById("error-message");
+            var termsCheckbox = document.getElementById("terms");
+
+            // Password match validation
+            if (password !== confirmPassword) {
+                errorMessage.style.display = "block";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+            }
+
+            // Terms and Conditions validation
+            if (!termsCheckbox.checked) {
+                alert("You must accept the Terms of Use and Privacy Policy.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+</html>

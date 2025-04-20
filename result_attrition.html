@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,  #4A90E2, #1C3E67); /* Swapped colors */
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin: 5px 0;
+        }
+        strong {
+            color: #222;
+        }
+        
+        /* Styles for prediction result */
+        .prediction {
+            font-size: 26px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .high-risk {
+            color: red;
+            border: 2px solid red;
+        }
+        .low-risk {
+            color: green;
+            border: 2px solid green;
+        }
+
+        /* Back button styling */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Result</h2>
+
+        <!-- Add class dynamically using Jinja -->
+        <p class="prediction {% if prediction == 'Yes' %} high-risk {% else %} low-risk {% endif %}">
+            Prediction: {{ prediction }}
+        </p>
+
+        <p><strong>Age:</strong> {{ age }}</p>
+        <p><strong>Job Satisfaction:</strong> {{ job_satisfaction }}</p>
+        <p><strong>Work-Life Balance:</strong> {{ work_life_balance }}</p>
+        <p><strong>Monthly Income:</strong> ₹{{ monthly_income }}</p>
+        <p><strong>Years at Company:</strong> {{ years_at_company }}</p>
+        <p><strong>Performance Rating:</strong> {{ performance_rating }}</p>
+        <p><strong>Overtime:</strong> {{ overtime }}</p>
+        <p><strong>Education Level:</strong> {{ education_level }}</p>
+        <p><strong>Gender:</strong> {{ gender }}</p>
+        <p><strong>Department:</strong> {{ department }}</p>
+        <p><strong>Number of Projects:</strong> {{ num_projects }}</p>
+
+        <a href="/employee_attrition" class="back-button">BACK</a>
+    </div>
+</body>
+</html>
