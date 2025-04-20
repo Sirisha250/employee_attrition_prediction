@@ -1,0 +1,20 @@
+        /* ✅ Force Visibility of Form Fields */
+        input, select, label, h2 {
+            display: block !important;  /* Force display */
+            visibility: visible !important; /* Ensure they are not hidden */
+            opacity: 1 !important; /* Ensure they are not transparent */
+        }
+
+        /* ✅ Set Background Color for Input Fields */
+        input, select {
+            background-color: white !important; 
+            color: black !important; 
+        }
+
+        /* ✅ Ensure Form Is Not Hidden */
+        form {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
